@@ -1,4 +1,8 @@
-package com.sample.app;
+package com.sample.app.main;
+
+import com.sample.app.server.SampleAppApplication;
+import com.sample.app.service.first.FirstService;
+import com.sample.app.service.second.SecondService;
 
 public class TestMain {
 	public static void main(String[] args) {

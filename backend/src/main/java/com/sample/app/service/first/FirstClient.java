@@ -1,10 +1,12 @@
-package com.sample.app;
+package com.sample.app.service.first;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.sample.app.rest.JsonInput;
 
 @FeignClient("first-service")
 public interface FirstClient {

@@ -12,7 +12,7 @@
 	</parent>
 	<properties>
 		<!-- Stand-alone RESTFul application for testing only -->
-		<start-class>com.sample.app.TestMain</start-class>
+		<start-class>com.sample.app.main.TestMain</start-class>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->

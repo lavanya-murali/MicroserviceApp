@@ -1,4 +1,4 @@
-package com.sample.app;
+package com.sample.app.service.first;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -8,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
+
+import com.sample.app.rest.JsonInput;
+import com.sample.app.rest.WebService;
 
 @EnableAutoConfiguration
 @SpringBootApplication
@@ -48,10 +52,11 @@ public class FirstService {
 	 }
 	
 	@LoadBalanced
-	@Bean
+	@Bean(name="customRestTemplate")
 	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+	
 	/**
 	 * The AccountService encapsulates the interaction with the micro-service.
 	 * 

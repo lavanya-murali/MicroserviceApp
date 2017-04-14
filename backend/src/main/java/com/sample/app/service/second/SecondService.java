@@ -1,4 +1,4 @@
-package com.sample.app;
+package com.sample.app.service.second;
 
 import java.util.logging.Logger;
 
@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sample.app.rest.Data;
+import com.sample.app.rest.JsonInput;
 import com.sample.app.sequence.SequenceSelector;
+import com.sample.app.service.first.ConfigurationService;
 
 @SpringBootApplication
 @EnableDiscoveryClient

@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.sample.app.Data;
+import com.sample.app.rest.Data;
 
 @Component
 public class SequenceSelector {

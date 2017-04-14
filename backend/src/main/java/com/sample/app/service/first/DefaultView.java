@@ -1,4 +1,4 @@
-package com.sample.app;
+package com.sample.app.service.first;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;

@@ -1,4 +1,4 @@
-package com.sample.app;
+package com.sample.app.rest;
 
 import java.util.logging.Logger;
 
@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +34,7 @@ public class WebService{
 	protected String serviceUrl;
 	@LoadBalanced
 	@Autowired
+	@Qualifier("customRestTemplate")
 	protected RestTemplate restTemplate;
 	protected Logger logger = Logger.getLogger(WebService.class
 			.getName());
