@@ -1,0 +1,18 @@
+# Spring properties
+spring:
+  application:
+     name: first-service
+  freemarker:
+    enabled: false     # Ignore Eureka dashboard FreeMarker templates
+
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5 
+
+# HTTP Server
+server:
+  port: 2222   # HTTP (Tomcat) port
