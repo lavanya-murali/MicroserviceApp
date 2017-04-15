@@ -8,6 +8,7 @@ eureka:
      
 server:
   port: 1111   # HTTP (Tomcat) port
+  context-path: /microserviceregistry
 
 # Discovery Server Dashboard uses FreeMarker.  Don't want Thymeleaf templates
 spring:

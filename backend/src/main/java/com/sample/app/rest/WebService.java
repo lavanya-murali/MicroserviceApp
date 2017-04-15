@@ -22,26 +22,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-@PropertySource("classpath:swap.properties")
 public class WebService{
 
-	@Value("${swap.type}")
-	String swapType;
 	
-	@Value("${swap.function}")
-	String swapFunction;
 	
 	protected String serviceUrl;
 	@LoadBalanced
 	@Autowired
-	@Qualifier("customRestTemplate")
 	protected RestTemplate restTemplate;
 	protected Logger logger = Logger.getLogger(WebService.class
 			.getName());
-
-	public WebService() {
-		super();
-	}
 	
 	public WebService(String serviceUrl) {
 		this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl
@@ -63,14 +53,14 @@ public class WebService{
 				+ restTemplate.getRequestFactory().getClass());
 	}
 
-	public JsonInput swapArray(JsonInput data) {
+	public JsonInput swapArray(JsonInput data, String swapType,String swapFunction) {
 		
 		logger.info("swapArray() invoked: for " +  ReflectionToStringBuilder.toString(data));
 		logger.info("restTemplate():  " + restTemplate);
 		logger.info("env.getProperty "+ swapType);
 		logger.info("env.getProperty "+ swapFunction);
 		HttpHeaders requestHeaders = new HttpHeaders();
-		RestTemplate restTemplate = new RestTemplate();
+		//RestTemplate restTemplate = new RestTemplate();
 		requestHeaders.add(HttpHeaders.CONTENT_TYPE, javax.ws.rs.core.MediaType.APPLICATION_JSON);
 		
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());

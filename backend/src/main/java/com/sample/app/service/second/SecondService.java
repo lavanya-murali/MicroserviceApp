@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sample.app.rest.Data;
 import com.sample.app.rest.JsonInput;
 import com.sample.app.sequence.SequenceSelector;
-import com.sample.app.service.first.ConfigurationService;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableEurekaClient
 @RestController
-@ComponentScan("com.sample.app,com.sample.app.sequence")
+@ComponentScan("com.sample.app.sequence")
 public class SecondService {
-	
-	@Autowired
-	ConfigurationService configurationService;
 
 	protected Logger logger = Logger.getLogger(SecondService.class
 			.getName());
