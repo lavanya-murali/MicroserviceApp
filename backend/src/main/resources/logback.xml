@@ -18,7 +18,6 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
 
     <!-- Specify logging levels -->
     <logger name="org.springframework" level="warn"/>
- 	<logger name="org.hibernate" level="warn"/>
          
     <root level="info">
         <appender-ref ref="console"/>

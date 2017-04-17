@@ -15,11 +15,14 @@ public class SequenceSelector {
 	public Data swap(String swapType, String swapFunction, Data data){
 		String firstListofNumbers = data.getString1();
 		String secondListofNumbers = data.getString2();
-		System.out.println(firstListofNumbers);
-		System.out.println(secondListofNumbers);
-		List<Integer> firstList = Arrays.asList(firstListofNumbers.split(",")).stream().map(e -> new Integer(e)).collect(Collectors.toList());
-		List<Integer> secondList = Arrays.asList(secondListofNumbers.split(",")).stream().map(e -> new Integer(e)).collect(Collectors.toList());
-		List<Integer> indexes  = generateSequence(swapType, swapFunction, firstList, secondList);
+		List<Integer> firstList = firstListofNumbers!=null && firstListofNumbers.trim().length()>0 ? Arrays.asList(
+				firstListofNumbers.split(",")).stream().map(e -> new Integer(e)).collect(
+						Collectors.toList()) : null;
+		List<Integer> secondList = secondListofNumbers!=null && secondListofNumbers.trim().length()>0 ? Arrays.asList(
+				secondListofNumbers.split(",")).stream().map(e -> new Integer(e)).collect(
+						Collectors.toList()) :null;
+		List<Integer> indexes  = firstList !=null && secondList!=null? generateSequence(
+				swapType, swapFunction, firstList, secondList) :null;
 		if (indexes!=null)
 		{
 			indexes.forEach(p-> {
@@ -40,41 +43,26 @@ public class SequenceSelector {
 		
 		SwapFunctionEnum function = SwapFunctionEnum.valueOf(swapFunction);
 		SwapTypeEnum type = SwapTypeEnum.getByType(swapType);
-		if (firstList!=null && secondList!=null) {
-			switch (type) {
-			case BY_POSITION:
-				return getSwapIndexes(function, firstList, secondList);
-			case BY_VALUE:
-				return createSwapIndexes(function, firstList);
-			default:
-				return null;
+		switch (type) {
+		case BY_POSITION:
+			return getSwapIndexes(function, firstList, secondList);
+		case BY_VALUE:
+			return createSwapIndexes(function, firstList);
+		default:
+			return null;
 
-			}
 		}
-		return null;
 	}
 
 	private List<Integer> createSwapIndexes(SwapFunctionEnum function, List<Integer> firstList) {
 		List<Integer> indexes = new ArrayList<Integer>();
-		if (function.compareTo(SwapFunctionEnum.EVEN) == 0) {
-			
-			firstList.forEach(p -> {
-				if(p%2 == 0)
-				{
-					indexes.add(firstList.indexOf(p));
-				}
-			});
-
-		} else if (function.compareTo(SwapFunctionEnum.ODD) == 0) {
-			firstList.forEach(p -> {
-				if(p==1 || p%2 != 0)
-				{
-					System.out.println("firstList.indexOf(p)" + firstList.indexOf(p));
-					indexes.add(firstList.indexOf(p));
-				}
-			});
-
-		}
+		firstList.forEach(p -> {
+			if (function.compareTo(SwapFunctionEnum.EVEN) == 0 && p%2 == 0) 
+				indexes.add(firstList.indexOf(p));
+			else if (function.compareTo(SwapFunctionEnum.ODD) == 0 && (p==1 || p%2 != 0)) 
+				indexes.add(firstList.indexOf(p));
+		});
+		
 		return indexes;
 	}
 
